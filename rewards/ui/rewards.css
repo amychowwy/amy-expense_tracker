@@ -1,0 +1,83 @@
+/* Reward 頁面專用樣式：只用 .rw- 開頭，唔覆寫 style.css 任何 class。
+ * 顏色全部用 style.css 已有嘅 token（light / dark 自動跟系統）。 */
+
+.rw-back {
+  min-width: 72px; height: 40px;
+  display: inline-flex; align-items: center;
+  color: var(--blue); font-size: 16px; font-weight: 600; text-decoration: none;
+}
+.rw-bar-spacer { min-width: 72px; }
+
+.rw-banner {
+  margin-top: 8px; padding: 10px 14px; border-radius: 14px;
+  background: var(--pink-soft); font-size: 13px;
+}
+.rw-banner b { display: block; }
+
+/* ---- Hero ---- */
+.rw-unit { font-size: 17px; font-weight: 600; margin-left: 4px; color: var(--text2); }
+.rw-max { font-size: 13px; color: var(--text2); margin-top: 2px; }
+.rw-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+.rw-levels div { background: var(--card2); border-radius: 12px; padding: 8px 10px; min-width: 0; }
+.rw-levels span { display: block; font-size: 11px; color: var(--text2); }
+.rw-levels b { display: block; font-size: 15px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.rw-levels small { display: block; font-size: 11px; color: var(--text2); }
+
+/* ---- 額度卡 ---- */
+.rw-quota { padding: 14px 16px; }
+.rw-quota + .rw-quota { margin-top: 10px; }
+.rw-q-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.rw-q-name { font-weight: 700; font-size: 16px; }
+.rw-q-rc { font-weight: 700; font-variant-numeric: tabular-nums; }
+.rw-q-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.rw-q-nums span { display: block; font-size: 11px; color: var(--text2); }
+.rw-q-nums b { display: block; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.rw-q-note { font-size: 12px; color: var(--text2); margin-top: 8px; }
+.rw-q-note.warn { color: var(--orange); }
+.rw-full .bar-fill { background: var(--pink); }
+
+/* ---- 篩選 ---- */
+.rw-seg { margin-top: 0; margin-bottom: 10px; }
+
+/* ---- 交易 ---- */
+.rw-txn + .rw-txn { border-top: 1px solid var(--sep); }
+.rw-txn summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; min-height: 56px;
+}
+.rw-txn summary::-webkit-details-marker { display: none; }
+.rw-t-main { flex: 1; min-width: 0; }
+.rw-t-name { font-weight: 600; overflow-wrap: anywhere; }
+.rw-t-sub { font-size: 12px; color: var(--text2); margin-top: 2px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.rw-t-right { text-align: right; flex: none; }
+.rw-t-rc { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rw-t-max { font-size: 11px; color: var(--text2); white-space: nowrap; }
+.rw-t-body { padding: 0 16px 14px; font-size: 13px; }
+.rw-t-body h4 { margin: 10px 0 4px; font-size: 12px; color: var(--text2); font-weight: 600; }
+.rw-t-body ul { margin: 0; padding-left: 18px; }
+.rw-t-body li { margin: 2px 0; overflow-wrap: anywhere; }
+.rw-kv { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; }
+.rw-kv span { color: var(--text2); }
+.rw-kv b { font-weight: 500; overflow-wrap: anywhere; }
+
+/* ---- 標籤 ---- */
+.rw-chip {
+  display: inline-block; font-size: 11px; font-weight: 600;
+  padding: 1px 8px; border-radius: 99px; white-space: nowrap;
+  background: var(--card2); color: var(--text2);
+}
+.rw-c-determined { background: var(--blue-soft); color: var(--blue); }
+.rw-c-conditional { background: var(--orange-soft); color: var(--orange); }
+.rw-c-uncertain { background: var(--orange-soft); color: var(--orange); }
+.rw-c-undeterminable { background: var(--over-soft); color: var(--over); }
+.rw-st-yes { color: var(--blue); }
+.rw-st-no { color: var(--text2); }
+.rw-st-maybe, .rw-st-conditional { color: var(--orange); }
+.rw-st-terms_missing { color: var(--over); }
+
+.rw-demo-btn { margin-top: 12px; text-decoration: none; }
+.rw-legend { padding: 14px 16px; font-size: 13px; }
+.rw-legend div + div { margin-top: 6px; }
+.rw-foot { font-size: 12px; color: var(--text2); text-align: center; margin: 18px 8px 0; }
+.rw-foot div + div { margin-top: 4px; }

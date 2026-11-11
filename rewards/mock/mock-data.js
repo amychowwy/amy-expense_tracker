@@ -29,6 +29,15 @@
     row(11, { Date: '2026-10-26', Time: '12:00', Type: 'Refund', Amount: '400.00', 'Merchant / Note': '示範網店 B 退款', Category: 'Shopping' }),
     row(12, { Date: '2026-10-30', Time: '22:15', Amount: '780.00', 'Merchant / Note': 'FamilyMart', Category: 'Travelling' }),
     row(13, { Date: '2026-10-31', Time: '23:10', Amount: '150.00', 'Merchant / Note': '示範網店 C', Category: 'Shopping' }),
+    // ---- 11 月 ----
+    row(14, { Date: '2026-11-02', Time: '12:40', Amount: '168.00', 'Merchant / Note': 'TamJai SamGor Mixian', Category: 'Meal' }),
+    row(15, { Date: '2026-11-03', Time: '10:00', Type: 'Refund', Amount: '350.50', 'Merchant / Note': '示範網店 A 部分退款', Category: 'Shopping' }),
+    row(16, { Date: '2026-11-04', Time: '20:15', Amount: '3,680.00', 'Merchant / Note': '示範網店 A', Category: 'Shopping', Source: 'Notification' }),
+    row(17, { Date: '2026-11-06', Time: '16:30', Amount: '899.00', 'Merchant / Note': 'Decathlon Hong Kong', Category: 'Shopping' }),
+    row(18, { Date: '2026-11-07', Time: '19:00', Type: 'Transfer', Amount: '1,560.00', 'Merchant / Note': '示範航空公司', Category: 'Travelling', 'Sub-category': 'Travel Advance' }),
+    row(19, { Date: '2026-11-08', Time: '13:10', Amount: '420.00', 'Merchant / Note': '@cosme STORE', Category: 'Beauty', Source: 'Apple Pay' }),
+    row(20, { Date: '2026-11-10', Time: '09:00', Amount: '1,200.00', 'Merchant / Note': '示範管理公司', Category: 'Others' }),
+    row(21, { Date: '2026-11-10', Time: '22:30', Amount: '258.00', 'Merchant / Note': '示範網店 B', Category: 'Shopping' }),
   ];
 
   const transactionMap = [
@@ -39,6 +48,14 @@
     { payment_id: 'M-SHOP-B', source_row_ids: [10], post_date: '2026-10-25', post_status: 'posted', original_currency: 'HKD', payment_method: 'online_card_entry', transaction_channel: 'online', channel_evidence: 'acquirer', transaction_nature: 'purchase' },
     { payment_id: 'M-SHOP-B-REFUND', source_row_ids: [11], post_date: '2026-10-27', post_status: 'posted', original_currency: 'HKD', refund_of: 'M-SHOP-B' },
     { payment_id: 'M-FAMILYMART-JP', source_row_ids: [12], post_status: 'pending', original_currency: 'JPY', payment_method: 'physical_card', transaction_channel: 'offline', transaction_nature: 'purchase', location: 'JP' },
+    // ---- 11 月 ----
+    { payment_id: 'M-TAMJAI', source_row_ids: [14], post_date: '2026-11-03', post_status: 'posted', original_currency: 'HKD', original_amount_hkd: '168.00', payment_method: 'physical_card', transaction_channel: 'offline', channel_evidence: 'bank_statement', transaction_nature: 'purchase', location: 'HK_STORE' },
+    { payment_id: 'M-SHOP-A-REFUND', source_row_ids: [15], post_date: '2026-11-04', post_status: 'posted', original_currency: 'HKD', refund_of: 'M-SHOP-A' }, // 跨月退款（原交易喺 10 月）
+    { payment_id: 'M-SHOP-A-NOV', source_row_ids: [16], post_date: '2026-11-05', post_status: 'posted', original_currency: 'HKD', original_amount_hkd: '3680.00', payment_method: 'online_card_entry', transaction_channel: 'online', channel_evidence: 'acquirer', transaction_nature: 'purchase' },
+    { payment_id: 'M-TRAVEL', source_row_ids: [18], post_date: '2026-11-08', post_status: 'posted', original_currency: 'HKD', payment_method: 'online_card_entry', transaction_channel: 'online', channel_evidence: 'user_confirmed', transaction_nature: 'purchase' },
+    { payment_id: 'M-COSME', source_row_ids: [19], post_date: '2026-11-09', post_status: 'posted', original_currency: 'HKD', payment_method: 'apple_pay_in_store', transaction_channel: 'offline', channel_evidence: 'bank_statement', transaction_nature: 'purchase', location: 'HK_STORE' },
+    { payment_id: 'M-MGMT', source_row_ids: [20], post_date: '2026-11-11', post_status: 'posted', original_currency: 'HKD', payment_method: 'online_card_entry', transaction_channel: 'online', channel_evidence: 'bank_statement', transaction_nature: 'rent_management_fee' },
+    { payment_id: 'M-SHOP-B-NOV', source_row_ids: [21], post_status: 'pending', original_currency: 'HKD', payment_method: 'online_card_entry', transaction_channel: 'online', channel_evidence: 'acquirer', transaction_nature: 'purchase' },
   ];
 
   // T28 離線部分：只有 role = amy 先攞到個人信用卡回贈資料。

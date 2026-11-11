@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- 第 2 階段：只有模擬資料，所以 connect-src 'none'，唔可以連接任何網絡 -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <title>HSBC Red 回贈</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="rewards/ui/rewards.css">
+  <script src="rewards/rules/hsbc-red.js" defer></script>
+  <script src="rewards/reward-engine.js" defer></script>
+  <script src="rewards/mock/mock-data.js" defer></script>
+  <script src="rewards/ui/rewards.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="bar">
+      <a id="rwBack" class="rw-back" href="./">‹ 帳簿</a>
+      <div class="month" id="rwMonth" hidden>
+        <button id="rwPrev" class="icon-btn" type="button" aria-label="上個月">‹</button>
+        <span id="rwMonthLabel" class="month-label"></span>
+        <button id="rwNext" class="icon-btn" type="button" aria-label="下個月">›</button>
+      </div>
+      <span class="rw-bar-spacer" aria-hidden="true"></span>
+    </div>
+    <div class="status">HSBC Red 預計回贈</div>
+  </header>
+
+  <main id="rwContent" class="content">
+    <div class="skel tall"></div><div class="skel"></div>
+  </main>
+</body>
+</html>

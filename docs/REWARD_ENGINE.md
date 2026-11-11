@@ -1,6 +1,6 @@
 # HSBC Red Reward Engine（第 1 階段）
 
-狀態：**離線計算引擎 + 自動測試**。未有 UI、未連接任何 Google Sheets / Apps Script、未部署。
+狀態：**第 2 階段：離線計算引擎 + 自動測試 + 模擬資料頁面**。未連接任何 Google Sheets / Apps Script、未部署、未加入 Dashboard 入口。
 規格：[`HSBC_Red_Reward_Engine_Spec_v1.0.md`](HSBC_Red_Reward_Engine_Spec_v1.0.md)。
 
 > Engine 只計**預計**回贈，唔代表銀行已確認派發。T01–T30 係 Spec 行為驗收，通過唔代表所有銀行條款已獨立核實。
@@ -19,7 +19,32 @@
 | `rewards/tests/test.html` + `test-page.js` | 瀏覽器測試頁 |
 | `rewards/tests/run-node.js` | Node 測試（可選） |
 
-原有 `index.html`、`app.js`、`style.css`、`manifest.json` 冇改，亦冇引用以上任何檔案。
+| `rewards.html` | 第 2 階段獨立頁面（只有模擬資料） |
+| `rewards/ui/rewards.js` | 頁面邏輯：冇 fetch、冇 localStorage，唔讀 `amyb.url` / `amyb.key` |
+| `rewards/ui/rewards.css` | 頁面樣式，只用 `.rw-` 開頭，顏色用 `style.css` 已有 token |
+
+原有 `index.html`、`app.js`、`style.css`、`manifest.json` 冇改，亦冇引用以上任何檔案。`rewards.html` 只係只讀引用 `style.css`。
+
+## 頁面（第 2 階段）
+
+| 網址 | 睇乜 |
+|---|---|
+| `rewards.html?demo` | Amy 身份，虛構數據；預設顯示本月（香港時間），可以切換有資料嘅月份 |
+| `rewards.html?demo=lai` | 冇權限畫面，唔會計算或者顯示任何 Amy 資料 |
+| `rewards.html` | 「未開放」畫面（未有真實模式） |
+
+內容：
+- 本月預計回贈（保守）同「最多可能」。
+- 確定 / 條件估算 / 無法確認。
+- 8% / 4% 額度：保守已用、剩餘簽帳同 RC，並註明未確定交易佔用咗幾多。
+- 基本 0.4%。
+- 交易列表：全部 / 需要留意；撳入去睇資格判斷、情境、標記、追溯。
+- 唔計入回贈嘅記錄（還款、退款、待處理）。
+- 說明。
+
+CSP 設 `connect-src 'none'`，頁面連唔到任何網絡。Dashboard 未有入口，要直接輸入網址先開到（第 6 階段先加）。
+
+注意：額度按次序分配，所以單筆交易嘅高情境回贈有機會低過低情境（排喺前面嘅未確定交易用咗額度）。頁面只會喺「未確定」而高情境較高時先顯示「最多」，每月總數就一定係高 ≥ 低。
 
 ## 點樣跑測試
 
@@ -116,4 +141,5 @@ AmyRewards.engine.calculate({ trackerRows, transactionMap, rules: AmyRewards.rul
 ## 未完成
 
 - T28 server-side 權限：要 Apps Script 按 key 拒絕 Lai。v1.34 唔可以改，所以列為 Not Yet Testable。
-- 第 2 階段 UI（`rewards.html`）未開始。
+- 真實資料模式：要 Apps Script 加只讀 action（第 4–5 階段，要另外批准）。
+- Dashboard 入口（第 6 階段）。

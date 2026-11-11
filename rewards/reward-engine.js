@@ -382,11 +382,15 @@
     return combine(parts.filter(Boolean));
   }
 
+  const LOCATION_LABEL = {
+    HK_STORE: '只限香港店舖（唔包百貨公司專櫃 / outlets）', JP_DESIGNATED_STORE: '只限日本指定門市',
+    JP: '只限日本', KR: '只限韓國', KR_STORE: '只限韓國門市',
+  };
   function locationCheck(r, p) {
     const loc = p.location;
     const need = r.location_restriction;
     if (!need) return null;
-    if (!loc) return { s: 'maybe', r: `冇地區 / 店舖資料，未能核實「${need}」限制` };
+    if (!loc) return { s: 'maybe', r: `冇地區 / 店舖資料，未能核實「${LOCATION_LABEL[need] || need}」` };
     if (need === 'HK_STORE') {
       if (loc === 'HK_STORE') return { s: 'yes' };
       if (loc === 'HK_DEPT_COUNTER' || loc === 'HK_OUTLET') return { s: 'no', r: '百貨公司專櫃 / outlets 唔包括喺內' };
