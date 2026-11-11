@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Reward Engine 測試</title>
+  <style>
+    :root { color-scheme: light dark; --bg:#F2F2F7; --card:#fff; --text:#1C1C1E; --text2:#8E8E93; --sep:rgba(60,60,67,.12);
+      --pass:#2E9D5B; --fail:#F0506E; --block:#FFA94D; --nyt:#6B9BFF; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#000; --card:#1C1C1E; --text:#F2F2F7; --text2:#98989F; --sep:rgba(84,84,88,.55); } }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font:14px/1.45 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; }
+    main { max-width: 900px; margin: 0 auto; padding: 16px; }
+    h1 { font-size: 20px; margin: 8px 0 4px; }
+    h2 { font-size: 17px; margin: 24px 0 8px; }
+    .note { color: var(--text2); font-size: 13px; margin: 4px 0; }
+    .counts { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+    .pill { padding: 4px 12px; border-radius: 99px; font-weight: 600; font-size: 13px; color: #fff; }
+    .passed { background: var(--pass); } .failed { background: var(--fail); }
+    .blocked { background: var(--block); } .not_yet_testable { background: var(--nyt); }
+    .case { background: var(--card); border-radius: 14px; padding: 10px 14px; margin: 8px 0; }
+    .case summary { cursor: pointer; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+    .case .id { font-weight: 700; min-width: 34px; }
+    .case .exp, .case .why { color: var(--text2); font-size: 13px; margin: 6px 0 0; overflow-wrap: anywhere; }
+    .case .why { color: var(--fail); }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12px; }
+    td, th { text-align: left; padding: 4px 6px; border-top: 1px solid var(--sep); vertical-align: top; overflow-wrap: anywhere; }
+    .ok { color: var(--pass); } .bad { color: var(--fail); }
+    .scroll { overflow-x: auto; }
+  </style>
+  <script src="../rules/hsbc-red.js" defer></script>
+  <script src="../reward-engine.js" defer></script>
+  <script src="../mock/mock-data.js" defer></script>
+  <script src="test-runner.js" defer></script>
+  <script src="fixtures.js" defer></script>
+  <script src="spec-cases.js" defer></script>
+  <script src="extra-cases.js" defer></script>
+  <script src="test-page.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>HSBC Red Reward Engine 測試</h1>
+    <p class="note">全部用虛構資料，冇連接任何 Google Sheets 或 Apps Script。</p>
+    <p class="note">T01–T30 係 Spec v1.0 行為驗收：通過唔代表所有銀行條款已獨立核實。Blocked / Not Yet Testable 唔當通過。</p>
+    <div id="out">執行中…</div>
+  </main>
+</body>
+</html>
